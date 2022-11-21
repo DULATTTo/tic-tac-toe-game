@@ -16,22 +16,25 @@ const winningMessage = document.getElementById("winningMessage")
 const winningMessageTextElement = document.querySelector("[data-winning-message-text]")
 const restartButton = document.getElementById("restartButton")
 restartButton.addEventListener("click", startGame)
+let playerTurn = true
 let xTurn
 
 startGame()
 
 function startGame() {
   xTurn = true
+  setBoardHoverClass()
   cellElements.forEach(cell => {
     cell.classList.remove(X_CLASS)
     cell.classList.remove(CIRCLE_CLASS)
     cell.removeEventListener("click", handleClick)
     cell.addEventListener("click", handleClick, { once: true })
   })
-  setBoardHoverClass()
   winningMessage.classList.remove("show")
+  if (!playerTurn) {
+    botTurn()
+  }
 }
-
 
 
 function handleClick(e) {
@@ -45,10 +48,13 @@ function handleClick(e) {
   } else {
     swapTurns()
     setBoardHoverClass()
+    botTurn()
   }
 }
 
+
 function endGame(isDraw) {
+  playerTurn = !playerTurn
   if (isDraw) {
     winningMessageTextElement.textContent = `Draw!`
   } else {
@@ -91,4 +97,21 @@ function checkWin(currentClass) {
       return cellElements[index].classList.contains(currentClass)
     })
   })
+}
+
+function botTurn() {
+  const botsCurrentClass = xTurn ? X_CLASS : CIRCLE_CLASS
+  const emptyCells =  [...cellElements].filter(cell => {
+      return !(cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS))
+  })
+  const randomIndex = Math.floor( Math.random() * emptyCells.length )
+  placeMark(emptyCells[randomIndex], botsCurrentClass)
+  if (checkWin(botsCurrentClass)) {
+      endGame(false)
+  } else if (checkDraw()) {
+      endGame(true)
+  } else {
+      swapTurns()
+      setBoardHoverClass()
+  }
 }
