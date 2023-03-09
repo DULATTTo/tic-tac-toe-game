@@ -135,7 +135,8 @@ body {
 }
 
 
-.winning-message {
+.winning-message,
+.menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -147,20 +148,44 @@ body {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  font-size: 5rem;
+  font-size: 10vmin;
+}
+
+.winning-message {
   display: none;
 }
 
+.winning-message-text {
+  margin-bottom: 0.1em;
+}
 
+.menu-title {
+  margin: 0;
+}
+
+.menu.hide {
+  display: none;
+}
+
+#playBotButton {
+  margin: 1em;
+}
+
+#playFriendButton,
+#playBotButton,
 .winning-message button {
-  font-size: 3rem;
+  font-size: 6vmin;
   background-color: white;
   border: 1px solid black;
   padding: 0.25em 0.5em;
   cursor: pointer;
+  transition-duration: .15s;
 }
 
-
+#playFriendButton:hover,
+#playBotButton:hover,
+#playFriendButton:focus,
+#playBotButton:focus,
 .winning-message button:hover,
 .winning-message button:focus {
   background: black;
