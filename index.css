@@ -7,6 +7,12 @@
   --mark-size: calc(var(--cell-size) * 0.8);
 }
 
+@media (max-width: 600px) {
+  :root {
+    --cell-size: 25vmin;
+  }
+}
+
 body {
   margin: 0;
 }
@@ -118,6 +124,14 @@ body {
 .cell.x,
 .cell.circle {
   cursor: not-allowed;
+  animation: show 100ms;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
 }
 
 
