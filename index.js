@@ -1,3 +1,4 @@
+const CELLS_COUNT = 9
 const X_CLASS = "x"
 const CIRCLE_CLASS = "circle"
 const WINNING_COMBINATIONS = [
@@ -10,8 +11,12 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-const cellElements = document.querySelectorAll("[data-cell]")
+
 const board = document.getElementById("board")
+board.append(createCells())
+
+const cellElements = document.querySelectorAll(".cell")
+
 const winningMessage = document.getElementById("winningMessage")
 const winningMessageTextElement = document.querySelector("[data-winning-message-text]")
 const restartButton = document.getElementById("restartButton")
@@ -20,6 +25,18 @@ let playerTurn = true
 let xTurn
 
 startGame()
+
+function createCells() {
+  const fragment = document.createDocumentFragment()
+
+  for (let i = 0; i < CELLS_COUNT; i++) {
+    const cell = document.createElement("div")
+    cell.classList.add("cell")
+    fragment.append(cell)
+  }
+
+  return fragment
+}
 
 function startGame() {
   xTurn = true
