@@ -177,6 +177,7 @@ body {
   font-size: 6vmin;
   background-color: white;
   border: 1px solid black;
+  color: black;
   padding: 0.25em 0.5em;
   cursor: pointer;
   transition-duration: .15s;
