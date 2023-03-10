@@ -1,11 +1,12 @@
 # Tic Tac Toe Game
-This is a simple Tic Tac Toe game created using JavaScript. It also features a primitive AI bot.
+This is a Tic Tac Toe game created using JavaScript. It also features a simple AI bot that chooses a random empty cell to set a mark.
 
 ## Features
 - Supports two players or player vs. bot.
 - Fully responsive design for mobile devices.
 - Indicates game results (win, lose, tie).
-- AI bot chooses a random empty cell to set its mark.
+- Current mark indicator on cell hover state. 
+- Mark placement animation.
 - Simple and intuitive UI.
 
 
